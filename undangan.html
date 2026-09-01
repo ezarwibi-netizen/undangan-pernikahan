@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Rama & Sinta</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration & Custom CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        jawa: {
+                            dark: '#3A2618',  /* Cokelat Tua */
+                            gold: '#D4AF37',  /* Emas */
+                            light: '#F4EFEA', /* Krem */
+                            accent: '#8B5A2B' /* Cokelat Kayu */
+                        }
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['"Lato"', 'sans-serif'],
+                        'script': ['"Great Vibes"', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Pattern Background Latar Belakang Batik */
+        .bg-batik {
+            background-color: #F4EFEA;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b5a2b' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Animasi Transisi */
+        .slide-up {
+            transform: translateY(-100%);
+            transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Styling Ornamen Wayang Gunungan */
+        .gunungan {
+            fill: #D4AF37;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
+        }
+
+        /* Mobile Container Constraint */
+        .mobile-container {
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background-color: #F4EFEA;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 antialiased text-jawa-dark selection:bg-jawa-gold selection:text-white">
+
+    <div class="mobile-container bg-batik">
+        
+        <!-- ================= COVER UNDANGAN ================= -->
+        <div id="cover-page" class="absolute inset-0 z-50 bg-jawa-dark flex flex-col justify-center items-center text-center p-6 text-jawa-light transition-transform duration-1000 origin-top">
+            <!-- Background Image Pattern -->
+            <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')]"></div>
+            
+            <div class="relative z-10 flex flex-col items-center w-full fade-in">
+                <p class="text-sm font-sans tracking-widest mb-4 text-jawa-gold uppercase">The Wedding Of</p>
+                
+                <!-- SVG Gunungan Wayang -->
+                <svg class="w-32 h-32 mb-6 gunungan" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 0 C40 30 10 50 10 90 C10 110 30 120 50 120 C70 120 90 110 90 90 C90 50 60 30 50 0 Z" />
+                    <path d="M50 10 C45 35 20 55 20 90 C20 105 35 110 50 110 C65 110 80 105 80 90 C80 55 55 35 50 10 Z" fill="#3A2618"/>
+                    <path d="M50 30 C45 50 35 70 35 90 L65 90 C65 70 55 50 50 30 Z" fill="#D4AF37"/>
+                    <circle cx="50" cy="75" r="5" fill="#3A2618"/>
+                </svg>
+
+                <h1 class="font-script text-6xl text-jawa-gold mb-2 drop-shadow-lg">Rama & Sinta</h1>
+                
+                <p class="font-serif italic text-lg mb-8">Minggu, 15 November 2026</p>
+                
+                <div class="mt-4 mb-8">
+                    <p class="text-sm font-sans mb-2 opacity-80">Kepada Yth.</p>
+                    <p class="font-serif text-xl font-bold border-b border-jawa-gold pb-1 inline-block">Bapak/Ibu/Saudara/i</p>
+                </div>
+
+                <button onclick="bukaUndangan()" class="bg-jawa-gold text-jawa-dark font-sans font-bold py-3 px-8 rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:bg-yellow-500 hover:scale-105 transition-all duration-300 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"></path></svg>
+                    Buka Undangan
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= ISI UNDANGAN ================= -->
+        <div id="main-content" class="h-full overflow-y-auto hidden opacity-0 transition-opacity duration-1000">
+            
+            <!-- Sambutan & Wayang Header -->
+            <section class="pt-16 pb-10 px-6 text-center">
+                <svg class="w-16 h-16 mx-auto mb-4 gunungan" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 0 C40 30 10 50 10 90 C10 110 30 120 50 120 C70 120 90 110 90 90 C90 50 60 30 50 0 Z" fill="#D4AF37"/>
+                </svg>
+                <h2 class="font-serif text-2xl font-bold mb-4 text-jawa-accent">Rahayu, Sagung Dumadi</h2>
+                <p class="font-sans text-sm leading-relaxed text-gray-700">
+                    Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah perkenankanlah kami merangkaikan kasih sayang yang Kau ciptakan di antara putra-putri kami:
+                </p>
+            </section>
+
+            <!-- Profil Mempelai -->
+            <section class="py-8 px-6">
+                <!-- Mempelai Pria -->
+                <div class="flex flex-col items-center mb-12 text-center fade-in">
+                    <!-- Foto Pria -->
+                    <div class="w-40 h-40 rounded-full border-4 border-jawa-gold p-1 shadow-lg mb-4 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto Mempelai Pria" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="font-script text-4xl text-jawa-accent mb-2">Raden Rama</h3>
+                    <p class="font-serif font-bold text-lg">Rama Wijaya, S.T.</p>
+                    <p class="font-sans text-sm text-gray-600 mt-2">
+                        Putra Pertama dari<br>
+                        Bapak Prabu Dasarata & Ibu Kosalya
+                    </p>
+                </div>
+
+                <div class="flex justify-center mb-12">
+                    <span class="font-script text-5xl text-jawa-gold">&</span>
+                </div>
+
+                <!-- Mempelai Wanita -->
+                <div class="flex flex-col items-center text-center fade-in">
+                    <!-- Foto Wanita -->
+                    <div class="w-40 h-40 rounded-full border-4 border-jawa-gold p-1 shadow-lg mb-4 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto Mempelai Wanita" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="font-script text-4xl text-jawa-accent mb-2">Dewi Sinta</h3>
+                    <p class="font-serif font-bold text-lg">Sinta Larasati, S.E.</p>
+                    <p class="font-sans text-sm text-gray-600 mt-2">
+                        Putri Bungsu dari<br>
+                        Bapak Prabu Janaka & Ibu Sunayana
+                    </p>
+                </div>
+            </section>
+
+            <!-- Waktu & Tempat (Event Details) -->
+            <section class="py-12 px-6 bg-jawa-dark text-jawa-light text-center relative mt-8">
+                <!-- Ornamen Atas -->
+                <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                    <div class="bg-jawa-gold w-12 h-12 rotate-45 border-4 border-jawa-dark"></div>
+                </div>
+
+                <h2 class="font-serif text-3xl font-bold mb-8 text-jawa-gold mt-6">Waktu & Tempat</h2>
+                
+                <div class="bg-[#4A3222] p-6 rounded-lg shadow-md mb-6 border border-jawa-gold border-opacity-30">
+                    <h3 class="font-script text-3xl mb-2">Akad Nikah</h3>
+                    <p class="font-serif font-bold text-lg">Minggu, 15 November 2026</p>
+                    <p class="font-sans text-sm mb-4">Pukul 08.00 WIB - Selesai</p>
+                </div>
+
+                <div class="bg-[#4A3222] p-6 rounded-lg shadow-md border border-jawa-gold border-opacity-30">
+                    <h3 class="font-script text-3xl mb-2">Resepsi</h3>
+                    <p class="font-serif font-bold text-lg">Minggu, 15 November 2026</p>
+                    <p class="font-sans text-sm mb-4">Pukul 11.00 WIB - 14.00 WIB</p>
+                </div>
+            </section>
+
+            <!-- Countdown Timer -->
+            <section class="py-12 px-6 text-center">
+                <h2 class="font-serif text-2xl font-bold mb-6 text-jawa-accent">Menuju Hari Bahagia</h2>
+                
+                <div class="flex justify-center gap-3 font-serif">
+                    <div class="bg-white border-2 border-jawa-gold rounded-lg w-16 h-20 flex flex-col justify-center items-center shadow-md">
+                        <span id="days" class="text-2xl font-bold text-jawa-dark">00</span>
+                        <span class="text-xs text-gray-500 uppercase mt-1">Hari</span>
+                    </div>
+                    <div class="bg-white border-2 border-jawa-gold rounded-lg w-16 h-20 flex flex-col justify-center items-center shadow-md">
+                        <span id="hours" class="text-2xl font-bold text-jawa-dark">00</span>
+                        <span class="text-xs text-gray-500 uppercase mt-1">Jam</span>
+                    </div>
+                    <div class="bg-white border-2 border-jawa-gold rounded-lg w-16 h-20 flex flex-col justify-center items-center shadow-md">
+                        <span id="minutes" class="text-2xl font-bold text-jawa-dark">00</span>
+                        <span class="text-xs text-gray-500 uppercase mt-1">Menit</span>
+                    </div>
+                    <div class="bg-white border-2 border-jawa-gold rounded-lg w-16 h-20 flex flex-col justify-center items-center shadow-md">
+                        <span id="seconds" class="text-2xl font-bold text-jawa-dark">00</span>
+                        <span class="text-xs text-gray-500 uppercase mt-1">Detik</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Google Maps -->
+            <section class="py-10 px-6 bg-white text-center rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.05)] relative z-10">
+                <h2 class="font-serif text-2xl font-bold mb-2 text-jawa-accent">Lokasi Acara</h2>
+                <p class="font-sans text-sm text-gray-600 mb-6">
+                    <strong>Gedung Pendopo Agung</strong><br>
+                    Jl. Keraton No. 123, Yogyakarta
+                </p>
+                
+                <!-- Google Maps Embedded Iframe -->
+                <div class="w-full h-64 rounded-xl overflow-hidden shadow-lg border-4 border-jawa-light mb-6">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126438.33806399125!2d110.29393165!3d-7.797068299999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5787bd5b6bc5%3A0x21723fd4d3684f71!2sYogyakarta%2C%20Kota%20Yogyakarta%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sid!2sid!4v1699999999999!5m2!1sid!2sid" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="inline-block bg-jawa-dark text-jawa-light font-sans py-3 px-6 rounded-full text-sm hover:bg-jawa-accent transition-colors shadow-md">
+                    Buka di Google Maps
+                </a>
+            </section>
+
+            <!-- Konfirmasi Kehadiran / RSVP -->
+            <section class="py-10 px-6 bg-batik text-center">
+                <h2 class="font-serif text-2xl font-bold mb-4 text-jawa-accent">Konfirmasi Kehadiran</h2>
+                <p class="font-sans text-xs text-gray-600 mb-6">Mohon beritahu kami jika Anda berkenan hadir.</p>
+                
+                <form id="rsvp-form" class="space-y-4 text-left max-w-xs mx-auto mb-6">
+                    <div>
+                        <label class="block text-xs font-bold text-jawa-dark mb-1">Nama Lengkap</label>
+                        <input type="text" id="nama" required placeholder="Masukkan nama Anda" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-jawa-gold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-jawa-dark mb-1">Konfirmasi</label>
+                        <select id="kehadiran" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-jawa-gold">
+                            <option value="Hadir">Ya, Saya Akan Hadir</option>
+                            <option value="Tidak Hadir">Maaf, Tidak Bisa Hadir</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="btn-submit" class="w-full bg-jawa-gold text-jawa-dark font-bold py-3 rounded-lg shadow hover:bg-yellow-500 transition-colors text-sm">
+                        Kirim Konfirmasi
+                    </button>
+                </form>
+                <div id="rsvp-status" class="mt-4 text-xs font-semibold text-green-700 hidden">
+                    Terima kasih! Data Anda telah tersimpan.
+                </div>
+
+                <!-- Tampilan Data Database (Real-time) -->
+                <div class="max-w-xs mx-auto text-left mt-10 border-t border-jawa-gold/30 pt-6">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-serif text-lg font-bold text-jawa-dark">Daftar Tamu</h3>
+                        <button onclick="downloadExcel()" class="text-[10px] bg-jawa-dark text-white px-3 py-1.5 rounded shadow hover:bg-jawa-accent transition-colors flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Rekap Data
+                        </button>
+                    </div>
+                    
+                    <!-- Indikator Statistik -->
+                    <div class="flex justify-between gap-4 mb-4 text-xs">
+                        <div class="bg-green-100 text-green-800 px-3 py-1.5 rounded-md font-bold flex-1 text-center border border-green-200">
+                            Hadir: <span id="stats-hadir" class="text-sm">0</span>
+                        </div>
+                        <div class="bg-red-100 text-red-800 px-3 py-1.5 rounded-md font-bold flex-1 text-center border border-red-200">
+                            Tidak Hadir: <span id="stats-tidak" class="text-sm">0</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Wadah Daftar Hadir -->
+                    <div id="rsvp-list" class="space-y-3 max-h-60 overflow-y-auto pr-1">
+                        <p class="text-xs text-gray-500 text-center italic">Memuat database...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="bg-jawa-dark pt-10 pb-16 px-6 text-center text-jawa-light">
+                <p class="font-sans text-sm mb-6 opacity-90">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
+                <h3 class="font-script text-4xl text-jawa-gold mb-2">Terima Kasih</h3>
+                <p class="font-serif text-sm">Matur Nuwun</p>
+                
+                <div class="mt-8 opacity-50">
+                    <p class="text-xs">Dibuat dengan ❤️ untuk Rama & Sinta</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- JavaScript Interaktivitas & Countdown -->
+    <script>
+        // Fungsi untuk membuka undangan (menghilangkan cover)
+        function bukaUndangan() {
+            const cover = document.getElementById('cover-page');
+            const mainContent = document.getElementById('main-content');
+            
+            // Animasi slide ke atas
+            cover.classList.add('slide-up');
+            
+            // Tampilkan konten utama dan beri efek transisi
+            mainContent.classList.remove('hidden');
+            setTimeout(() => {
+                mainContent.classList.remove('opacity-0');
+            }, 100);
+        }
+
+        // --- Logika Countdown (Hitung Mundur) ---
+        // Tanggal Pernikahan: 15 November 2026 (Bulan di JS 0-indexed: Nov = 10)
+        const countdownDate = new Date(2026, 10, 15, 8, 0, 0).getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            // Perhitungan waktu
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Tampilkan hasil di elemen HTML
+            const daysEl = document.getElementById("days");
+            const hoursEl = document.getElementById("hours");
+            const minutesEl = document.getElementById("minutes");
+            const secondsEl = document.getElementById("seconds");
+
+            if (daysEl) daysEl.innerText = days < 10 ? "0" + days : days;
+            if (hoursEl) hoursEl.innerText = hours < 10 ? "0" + hours : hours;
+            if (minutesEl) minutesEl.innerText = minutes < 10 ? "0" + minutes : minutes;
+            if (secondsEl) secondsEl.innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            // Jika hitung mundur selesai
+            if (distance < 0) {
+                clearInterval(x);
+                if (daysEl) daysEl.innerText = "00";
+                if (hoursEl) hoursEl.innerText = "00";
+                if (minutesEl) minutesEl.innerText = "00";
+                if (secondsEl) secondsEl.innerText = "00";
+            }
+        }, 1000);
+    </script>
+
+    <!-- Cloud Database Storage Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'demo-undangan';
+        let firebaseConfig = {};
+        
+        try {
+            firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        } catch (e) {
+            console.warn("Konfigurasi database tidak ditemukan.");
+        }
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        // Path penyimpanan aman (publik namun terisolasi)
+        const rsvpCollectionPath = `artifacts/${appId}/public/data/rsvps`;
+        const rsvpCollection = collection(db, rsvpCollectionPath);
+
+        let currentUser = null;
+
+        async function initDatabase() {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    const credential = await signInWithCustomToken(auth, __initial_auth_token);
+                    currentUser = credential.user;
+                } else {
+                    const credential = await signInAnonymously(auth);
+                    currentUser = credential.user;
+                }
+                
+                // Mulai membaca data setelah autentikasi berhasil
+                loadRSVP();
+            } catch (error) {
+                console.error("Gagal terhubung ke database:", error);
+                document.getElementById('rsvp-list').innerHTML = `<p class="text-xs text-red-500 text-center italic">Gagal memuat database kehadiran.</p>`;
+            }
+        }
+
+        document.getElementById('rsvp-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!currentUser) return; 
+            
+            const btn = document.getElementById('btn-submit');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Menyimpan...';
+            btn.disabled = true;
+
+            const namaInput = document.getElementById('nama');
+            const kehadiranInput = document.getElementById('kehadiran');
+            
+            try {
+                // Menyimpan dokumen baru ke Cloud Firestore
+                await addDoc(rsvpCollection, {
+                    nama: namaInput.value,
+                    kehadiran: kehadiranInput.value,
+                    userId: currentUser.uid,
+                    createdAt: new Date().toISOString() 
+                });
+                
+                // Bersihkan input setelah sukses
+                namaInput.value = '';
+                const statusEl = document.getElementById('rsvp-status');
+                statusEl.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    statusEl.classList.add('hidden');
+                }, 4000);
+            } catch (error) {
+                console.error("Gagal menyimpan data:", error);
+                alert("Mohon maaf, terjadi kesalahan saat menyimpan data.");
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        });
+
+        function loadRSVP() {
+            if (!currentUser) return;
+
+            onSnapshot(rsvpCollection, (snapshot) => {
+                const list = [];
+                snapshot.forEach((doc) => {
+                    list.push({ id: doc.id, ...doc.data() });
+                });
+                
+                // Urutkan dari data yang terbaru (di client-side memory)
+                list.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                
+                // Simpan ke variabel global untuk fitur download
+                window.rsvpDataList = list;
+                
+                renderDaftarHadir(list);
+            }, (error) => {
+                console.error("Gagal membaca data rsvp:", error);
+            });
+        }
+
+        function renderDaftarHadir(list) {
+            const container = document.getElementById('rsvp-list');
+            if (!container) return;
+            
+            if (list.length === 0) {
+                container.innerHTML = '<p class="text-xs text-gray-500 text-center italic">Belum ada tamu yang mengonfirmasi.</p>';
+                return;
+            }
+
+            container.innerHTML = '';
+            
+            let hadirCount = 0;
+            let tidakCount = 0;
+            
+            list.forEach(item => {
+                if(item.kehadiran === 'Hadir') hadirCount++;
+                else tidakCount++;
+                
+                const div = document.createElement('div');
+                div.className = 'bg-white p-3 rounded-lg shadow-sm border border-gray-100 text-left';
+                
+                const badgeColor = item.kehadiran === 'Hadir' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700';
+                
+                // Ubah tanggal menjadi waktu lokal Indonesia
+                const dateObj = item.createdAt ? new Date(item.createdAt) : new Date();
+                const timeString = dateObj.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+                const dateString = dateObj.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year:'numeric' });
+                
+                div.innerHTML = `
+                    <div class="flex justify-between items-start mb-1 gap-2">
+                        <span class="font-bold text-sm text-jawa-dark break-words capitalize">${item.nama}</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-md ${badgeColor} whitespace-nowrap font-bold shrink-0">${item.kehadiran}</span>
+                    </div>
+                    <div class="text-[10px] text-gray-400 mt-1">${dateString} • ${timeString}</div>
+                `;
+                container.appendChild(div);
+            });
+            
+            // Perbarui visual angka statistik
+            document.getElementById('stats-hadir').innerText = hadirCount;
+            document.getElementById('stats-tidak').innerText = tidakCount;
+        }
+
+        // Fungsi untuk mengunduh data database ke format CSV (Bisa dibuka di Excel)
+        window.downloadExcel = function() {
+            if (!window.rsvpDataList || window.rsvpDataList.length === 0) {
+                alert("Belum ada data tamu untuk diunduh.");
+                return;
+            }
+
+            // Buat header CSV
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Waktu Konfirmasi,Nama Tamu,Status Kehadiran\r\n";
+
+            // Masukkan data dari database
+            window.rsvpDataList.forEach(function(rowArray) {
+                const dateObj = rowArray.createdAt ? new Date(rowArray.createdAt) : new Date();
+                const timeStr = dateObj.toLocaleString('id-ID').replace(/,/g, ''); 
+                
+                // Bersihkan koma pada nama agar format CSV tidak rusak
+                const namaBersih = rowArray.nama ? rowArray.nama.replace(/,/g, '') : 'Tanpa Nama';
+                const kehadiran = rowArray.kehadiran || 'Tidak Diketahui';
+
+                let row = `${timeStr},${namaBersih},${kehadiran}`;
+                csvContent += row + "\r\n";
+            });
+
+            // Proses download otomatis
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "Data_Tamu_RamaSinta.csv");
+            document.body.appendChild(link); // Dibutuhkan untuk Firefox
+            link.click();
+            document.body.removeChild(link);
+        };
+
+        // Memulai koneksi ke database saat halaman selesai dimuat
+        initDatabase();
+    </script>
+</body>
+</html>
